@@ -1,28 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void criptografar(char* texto_simples) {
+char* criptografar(char* texto_simples) {
 
+    // Descobrir tamanho do vetor.
     int contador = 0;
-
-    // Descobrir tamanho do vetor;
     while (texto_simples[contador] != '\0') {
         contador++;
     }
 
-    // Declarar um vetor de chars com o mesmo tamanho do texto simples.
-    char texto_criptografado[contador];
+    // Alocar um vetor de chars com o mesmo tamanho do texto simples.
+    char *texto_criptografado = (char*) malloc(contador * sizeof(char));
 
-    //
+    //Criptografar.
     for (int i = 0; i < contador; i++) {
-        texto_criptografado[i] = texto_simples[i] + 3;
-        printf("%c", texto_simples[i]);
+        texto_criptografado[i] = texto_simples[i] + 9;
     }
-    printf("%s", "\n");
-    for (int i = 0; i < contador; i++) {
-        printf("%c", texto_criptografado[i]);
-    }
+
+    return texto_criptografado;
 }
 
 int main() {
-    criptografar("gustavo");
+    char texto_simples[] = "Gustavo Henrique";
+    char* texto_criptografado = criptografar(texto_simples);
+    printf("%s", texto_criptografado);
 }
