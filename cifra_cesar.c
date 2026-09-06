@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* criptografar(char* texto_simples) {
+void criptografar(char* texto_simples) {
 
     // Descobrir tamanho do vetor.
     int contador = 0;
@@ -14,14 +14,12 @@ char* criptografar(char* texto_simples) {
 
     //Criptografar.
     for (int i = 0; i < contador; i++) {
-        texto_criptografado[i] = texto_simples[i] + 9;
+        texto_simples[i] = texto_simples[i] + 9;
     }
-
-    return texto_criptografado;
 }
 
 int main() {
     char texto_simples[] = "Gustavo Henrique";
-    char* texto_criptografado = criptografar(texto_simples);
-    printf("%s", texto_criptografado);
+    criptografar(texto_simples);
+    printf("%s", texto_simples);
 }
