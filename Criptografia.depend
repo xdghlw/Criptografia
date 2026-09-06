@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1788717948 source:/home/ghlw/Documentos/Programas/C/Criptografia/cifra_cesar.c
+	<stdio.h>
+	<stdlib.h>
+
