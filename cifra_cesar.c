@@ -5,7 +5,6 @@
 #define MIN_ASCII 32
 #define MAX_ASCII 127
 #define TAM_INTERVALO (MAX_ASCII - MIN_ASCII + 1) // 96
-// Tabela ASCII: Maiusculas: [65, 90]; Minusculas: [97, 122].
 
 //Criptografar.
 void criptografar(char texto_simples[], int chave) {
@@ -27,11 +26,9 @@ void criptografar(char texto_simples[], int chave) {
         // 3. Volta o caractere para o intervalo ASCII correto (somando 32)
         texto_simples[i] = novo_caractere + MIN_ASCII;
 
-        printf("%c", texto_simples[i], texto_simples[i]);
+//        printf("%c", texto_simples[i], texto_simples[i]);
     }
 }
-
-
 
 void descriptografar(char* texto_criptografado) {
     int contador = 0;
@@ -41,15 +38,21 @@ void descriptografar(char* texto_criptografado) {
         contador++;
     }
 
-    for (int j = 0; j < contador; j++) {
-        int c = texto_criptografado[j] - 10;
-        printf("%c\n", c);
-    }
+    int chave;
+
+    //Aplicar todas as chaves possíveis de acordo com o intervalo.
+    for (chave = 1; chave <= TAM_INTERVALO; chave++) {
+        printf("%d: ", chave);
+        for (int j = 0; j < contador; j++) {
+        int c = ((texto_criptografado[j] - MIN_ASCII + chave) % TAM_INTERVALO) + MIN_ASCII;
+        printf("%c", c);
+        }
     printf("\n");
+    }
 }
 
 int main() {
-    char texto_simples[] = "Gustavo Henrique";
-//    criptografar(texto_simples, 0);
-    printf("%d", (-190%95+95)%95);
+    char texto_simples[] = "Gustavo Henrique Loreto Weirich";
+    criptografar(texto_simples, 17);
+    descriptografar(texto_simples);
 }
